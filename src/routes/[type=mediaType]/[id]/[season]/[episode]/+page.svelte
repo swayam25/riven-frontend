@@ -6,6 +6,7 @@
 	import { statesName } from '$lib/constants';
 
 	export let data: PageData;
+	console.log(data.details)	
 </script>
 
 <svelte:head>
@@ -39,7 +40,7 @@
 					>
 						<img
 							alt={data.details.id}
-							src="https://www.themoviedb.org/t/p/w780{data.details.poster_path}"
+							src="https://www.themoviedb.org/t/p/w780{data.details.still_path}"
 							class="h-full w-full object-cover object-center"
 						/>
 					</div>
@@ -67,7 +68,7 @@
 				</div>
 			</div>
 
-			{#if data.details.episodes}
+			<!-- {#if data.details.episodes}
 				<div
 					class="mb-32 mt-16 flex w-full select-none flex-col gap-4 rounded-lg bg-zinc-50/10 p-8"
 				>
@@ -75,7 +76,7 @@
 
 					<div class="relative flex w-full cursor-pointer flex-wrap">
 						{#each data.details.episodes as episode}
-							<a href="/tv/{data.mediaID}/{data.seasonNumber}/{episode.episode_number}" class="group relative aspect-[2/1] h-fit w-full p-2 sm:w-1/2 xl:w-1/3">
+							<div class="group relative aspect-[2/1] h-fit w-full p-2 sm:w-1/2 xl:w-1/3">
 								<div class="h-full w-full overflow-hidden rounded-lg bg-white/10 shadow-xl">
 									<img
 										alt={episode.id}
@@ -114,11 +115,11 @@
 										</div>
 									</div>
 								</div>
-							</a>
+							</div>
 						{/each}
 					</div>
 				</div>
-			{/if}
+			{/if} -->
 		</div>
 	</div>
 </div>

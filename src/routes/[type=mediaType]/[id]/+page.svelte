@@ -643,17 +643,19 @@
 											</div>
 										{:else}
 											<div class="mt-auto flex w-full justify-between">
-												<div>
-													{#if getRivenSeason(season.season_number)?.state == 'Completed'}
-														<Badge class="bg-green-500 font-medium">Completed</Badge>
-														<!-- {:else if getRivenSeason(season.season_number)?.state == 'Downloaded' || getRivenSeason(season.season_number)?.state == 'PartiallyCompleted'}
-													<Badge class="bg-yellow-500 font-medium">Downloaded</Badge> -->
-													{:else}
-														<Badge class="font-medium"
-															>{getRivenSeason(season.season_number)?.state}</Badge
-														>
-													{/if}
-												</div>
+													<div>
+														{#if getRivenSeason(season.season_number)?.state}
+															{#if getRivenSeason(season.season_number)?.state == 'Completed'}
+																<Badge class="bg-green-500 font-medium">Completed</Badge>
+																<!-- {:else if getRivenSeason(season.season_number)?.state == 'Downloaded' || getRivenSeason(season.season_number)?.state == 'PartiallyCompleted'}
+															<Badge class="bg-yellow-500 font-medium">Downloaded</Badge> -->
+															{:else}
+																<Badge class="font-medium"
+																	>{getRivenSeason(season.season_number)?.state}</Badge
+																>
+															{/if}
+														{/if}
+													</div>
 												<div
 													class="self-end rounded-md bg-zinc-900/60 px-2 text-xs text-white sm:text-sm"
 												>
