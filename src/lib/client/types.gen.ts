@@ -52,13 +52,15 @@ export type CometConfig = {
  * }
  */
 export type Container = {
-    [key: string]: ContainerFile;
+    infohash: string;
+    files: ContainerFile[];
 };
 
 /**
  * Individual file entry in a container
  */
 export type ContainerFile = {
+    file_id: number;
     filename: string;
     filesize?: (number | null);
 };

@@ -138,15 +138,14 @@
 
 	let selectedFilesMappings: FileMapping[] = [];
 
-	function handleFileSelection(files: Container) {
+	function handleFileSelection(container: Container) {
 		// Convert selected files to mappings array for easier manipulation
-		selectedFilesMappings = Object.entries(files.root)
-			.filter(([_, file]) => file !== 'undefined')
-			.map(([id, file]) => {
+		selectedFilesMappings = container.files
+			.map((file) => {
 				const containerFile = file as unknown as ContainerFile;
 
 				return {
-					id,
+					id: String(containerFile.file_id),
 					filename: containerFile.filename,
 					filesize: containerFile.filesize || undefined,
 					// Try to extract season/episode from filename
@@ -462,8 +461,7 @@
 									class="w-full text-left"
 									on:click={() => {
 										selectFiles(container);
-										const filename = container.filename + '';
-										handleFileSelection({ root: { ...container, filename } });
+										handleFileSelection(container);
 									}}
 								>
 									<Card.Root
@@ -471,7 +469,7 @@
 									>
 										<Card.Content class="p-4">
 											<div class="grid gap-2">
-												{#each Object.entries(container) as [_id, file]}
+												{#each container.files as file}
 													<div class="flex items-center gap-2 rounded border p-2">
 														<FileIcon class="h-4 w-4" />
 														<span class="flex-1 truncate">{file.filename}</span>
